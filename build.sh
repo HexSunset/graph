@@ -1,5 +1,5 @@
 mkdir -p build/
-g++ -o build/main main.cpp -lm -lraylib
+g++ -o build/main src/main.cpp -lm -lraylib
 
 if [ "$1" = "run" ]; then
     build/main
