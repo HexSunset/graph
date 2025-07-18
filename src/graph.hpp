@@ -1,6 +1,8 @@
 #ifndef GRAPH_HPP
 #define GRAPH_HPP
 
+#include "config.hpp"
+
 double clamp(double x, double min, double max) {
 	if (x < min) {return min;}
 	if (x > max) {return max;}
@@ -18,6 +20,8 @@ struct Viewport {
 	int height;
 	double resolution; // How many pixels wide one unit square is.
 	Vec2 center;
+
+	Config config = Config();
 
 	Viewport(int w, int h) : width(w), height(h), resolution(width / 10.0), center(0, 0) {}
 
