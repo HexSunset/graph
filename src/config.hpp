@@ -6,6 +6,9 @@ struct Config {
 	int grid_number_size = 20;
 	Font font = GetFontDefault();
 	Config() {}
+	void set_font(std::string filename) {
+		font = LoadFont(filename.c_str());
+	}
 };
 
 #endif
