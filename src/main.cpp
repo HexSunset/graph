@@ -2,6 +2,8 @@
 #include <string>
 #include <sstream>
 #include <cstdio>
+#include <cmath>
+#include <vector>
 
 #include "graph.hpp"
 
@@ -59,13 +61,24 @@ int main() {
 		BeginDrawing();
 		
 		ClearBackground(BLACK);
-		vp.draw_axes();
+		//vp.draw_axes(Vec2(0, 0));
+		vp.draw_grid();
 		DrawFPS(0, 0);
-		//DrawCircle(origin_screen.x, origin_screen.y, 10, RAYWHITE);
-		vp.draw_point(p1, 5, RED);
-		vp.draw_point(p2, 5, GREEN);
-		vp.draw_point(p3, 5, BLUE);
-		vp.draw_point(p4, 5, YELLOW);
+
+		double a = -10.0;
+		double b = 10.0;
+		int point_count = 10000;
+		std::vector<Vec2> points;
+		for (int i = 0; i < point_count; i++) {
+			double x = a + (b - a) / point_count * i;
+			double y = 1/x;
+			points.push_back(Vec2(x, y));
+		}
+
+		for (int i = 0; i < point_count - 1; i++) {
+			if (!vp.point_is_inside(points[i])) continue;
+			vp.draw_line(points[i], points[i+1], GREEN);
+		}
 
 		DrawText(coordinates.str().c_str(), mouse_screen_pos.x, mouse_screen_pos.y - 20, 20, RAYWHITE);
 		
