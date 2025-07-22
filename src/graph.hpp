@@ -95,10 +95,6 @@ struct Viewport {
 		}
 	}
 
-	void draw_coordinate_plane() {
-		draw_grid();
-	}
-
 	Vec2 coord_to_screen(Vec2 p) {
 		Vec2 screen_center = Vec2(width / 2, height / 2);
 		double diff_x = p.x - center.x;
