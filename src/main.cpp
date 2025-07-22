@@ -1,4 +1,5 @@
 #include <raylib.h>
+#include <iostream>
 #include <string>
 #include <sstream>
 #include <cstdio>
@@ -8,10 +9,11 @@
 #include "graph.hpp"
 
 int main() {
-	Viewport vp = Viewport(800, 800);
+	Viewport vp = Viewport(1000, 1000);
 
 	// Anti-aliasing
 	SetConfigFlags(FLAG_MSAA_4X_HINT); 
+
 	vp.init();
 
 	Vec2 p1 = Vec2(1, 1);
