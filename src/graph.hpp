@@ -84,13 +84,8 @@ struct Viewport {
 		if (!point_is_inside(point) && !force) return;
 		Vec2 point_screen = coord_to_screen(point);
 
-		Color c = GRAY;
-		if (point == Vec2(0, 0)) {
-			c = RAYWHITE;
-		}
-
-		DrawLine(point_screen.x, 0, point_screen.x, height, c);
-		DrawLine(0, point_screen.y, width, point_screen.y, c);
+		DrawLineV(Vector2{point_screen.x, 0}, Vector2{point_screen.x, height}, GRAY);
+		DrawLineV(Vector2{0, point_screen.y}, Vector2{width, point_screen.y}, GRAY);
 
 		if (point.x == 0 || point.y == 0) {
 			if (point.x == 0)
@@ -102,7 +97,6 @@ struct Viewport {
 
 	void draw_coordinate_plane() {
 		draw_grid();
-		//draw_axes(Vec2(0, 0));
 	}
 
 	Vec2 coord_to_screen(Vec2 p) {
